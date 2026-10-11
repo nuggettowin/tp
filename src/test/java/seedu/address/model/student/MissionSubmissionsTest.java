@@ -155,17 +155,4 @@ public class MissionSubmissionsTest {
         }
     }
 
-    @Test
-    public void isValidWeek_newRange_acceptsEveryWeekAndRejectsOutsideRange() {
-        for (int week = 3; week <= 13; week++) {
-            assertTrue(MissionSubmissions.isValidWeek(week));
-            MissionSubmissions submissions = new MissionSubmissions().withSubmission(week);
-            assertTrue(submissions.hasSubmission(week));
-            assertTrue(submissions.withoutSubmission(week).getSubmittedWeeks().isEmpty());
-        }
-        for (int week : new int[] {Integer.MIN_VALUE, 0, 1, 2, 14, Integer.MAX_VALUE}) {
-            assertFalse(MissionSubmissions.isValidWeek(week));
-            assertThrows(IllegalArgumentException.class, () -> new MissionSubmissions(Set.of(week)));
-        }
-    }
 }

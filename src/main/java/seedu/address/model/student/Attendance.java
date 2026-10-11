@@ -14,11 +14,6 @@ import java.util.TreeSet;
  */
 public class Attendance {
 
-    public static final int MIN_WEEK = 3;
-    public static final int MAX_WEEK = 13;
-    public static final String MESSAGE_CONSTRAINTS =
-            "Tutorial week must be between " + MIN_WEEK + " and " + MAX_WEEK + " inclusive.";
-
     private final Set<Integer> attendedWeeks;
 
     public Attendance() {
@@ -36,13 +31,9 @@ public class Attendance {
         Set<Integer> copiedWeeks = new HashSet<>(attendedWeeks);
         for (Integer week : copiedWeeks) {
             requireNonNull(week);
-            checkArgument(isValidWeek(week), MESSAGE_CONSTRAINTS);
+            checkArgument(TutorialWeek.isValid(week), TutorialWeek.MESSAGE_CONSTRAINTS);
         }
         this.attendedWeeks = copiedWeeks;
-    }
-
-    public static boolean isValidWeek(int week) {
-        return week >= MIN_WEEK && week <= MAX_WEEK;
     }
 
     public boolean hasAttendence(int week) {

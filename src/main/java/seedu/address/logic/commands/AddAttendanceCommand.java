@@ -12,6 +12,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.student.Attendance;
 import seedu.address.model.student.Student;
+import seedu.address.model.student.TutorialWeek;
 
 /**
  * Records a week's tutorial attendance for a student identified by a displayed index.
@@ -36,7 +37,7 @@ public class AddAttendanceCommand extends Command {
      */
     public AddAttendanceCommand(Index targetIndex, int week) {
         this.targetIndex = targetIndex;
-        checkArgument(Attendance.isValidWeek(week), Attendance.MESSAGE_CONSTRAINTS);
+        checkArgument(TutorialWeek.isValid(week), TutorialWeek.MESSAGE_CONSTRAINTS);
         this.week = week;
     }
 

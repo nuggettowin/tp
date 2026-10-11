@@ -18,6 +18,7 @@ import seedu.address.model.student.Name;
 import seedu.address.model.student.Phone;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.StudioGroup;
+import seedu.address.model.student.TutorialWeek;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -168,8 +169,8 @@ class JsonAdaptedStudent {
     public MissionSubmissions toModelMissionSubmissions() throws IllegalValueException {
         Set<Integer> submittedWeeks = new HashSet<>();
         for (Object value : missionSubmissions) {
-            if (!(value instanceof Integer week) || !MissionSubmissions.isValidWeek(week)) {
-                throw new IllegalValueException(MissionSubmissions.MESSAGE_CONSTRAINTS);
+            if (!(value instanceof Integer week) || !TutorialWeek.isValid(week)) {
+                throw new IllegalValueException(TutorialWeek.MESSAGE_CONSTRAINTS);
             }
             submittedWeeks.add(week);
         }
@@ -180,8 +181,8 @@ class JsonAdaptedStudent {
     public Attendance toModelAttendance() throws IllegalValueException {
         Set<Integer> attendedWeeks = new HashSet<>();
         for (Object value : attendance) {
-            if (!(value instanceof Integer week) || !Attendance.isValidWeek(week)) {
-                throw new IllegalValueException(Attendance.MESSAGE_CONSTRAINTS);
+            if (!(value instanceof Integer week) || !TutorialWeek.isValid(week)) {
+                throw new IllegalValueException(TutorialWeek.MESSAGE_CONSTRAINTS);
             }
             attendedWeeks.add(week);
         }

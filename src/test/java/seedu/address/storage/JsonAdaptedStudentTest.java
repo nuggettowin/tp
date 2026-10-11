@@ -16,11 +16,11 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.student.Address;
 import seedu.address.model.student.Email;
-import seedu.address.model.student.MissionSubmissions;
 import seedu.address.model.student.Name;
 import seedu.address.model.student.Phone;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.StudioGroup;
+import seedu.address.model.student.TutorialWeek;
 import seedu.address.testutil.StudentBuilder;
 
 public class JsonAdaptedStudentTest {
@@ -150,7 +150,7 @@ public class JsonAdaptedStudentTest {
             JsonAdaptedStudent student = new JsonAdaptedStudent(VALID_NAME, VALID_PHONE, VALID_EMAIL,
                     VALID_ADDRESS, VALID_TAGS, VALID_STUDIO_GROUP, List.of(5, week), List.of());
 
-            assertThrows(IllegalValueException.class, MissionSubmissions.MESSAGE_CONSTRAINTS,
+            assertThrows(IllegalValueException.class, TutorialWeek.MESSAGE_CONSTRAINTS,
                     student::toModelType);
         }
     }
@@ -169,7 +169,7 @@ public class JsonAdaptedStudentTest {
         JsonAdaptedStudent student = new JsonAdaptedStudent(VALID_NAME, VALID_PHONE, VALID_EMAIL,
                 VALID_ADDRESS, VALID_TAGS, VALID_STUDIO_GROUP, Arrays.asList(5, null), List.of());
 
-        assertThrows(IllegalValueException.class, MissionSubmissions.MESSAGE_CONSTRAINTS,
+        assertThrows(IllegalValueException.class, TutorialWeek.MESSAGE_CONSTRAINTS,
                 student::toModelType);
     }
 
@@ -218,7 +218,7 @@ public class JsonAdaptedStudentTest {
                     "\"missionSubmissions\"\\s*:\\s*\\[[^]]*]", "\"missionSubmissions\": [" + value + "]");
             JsonAdaptedStudent student = JsonUtil.fromJsonString(json, JsonAdaptedStudent.class);
 
-            assertThrows(IllegalValueException.class, MissionSubmissions.MESSAGE_CONSTRAINTS, student::toModelType);
+            assertThrows(IllegalValueException.class, TutorialWeek.MESSAGE_CONSTRAINTS, student::toModelType);
         }
     }
 }

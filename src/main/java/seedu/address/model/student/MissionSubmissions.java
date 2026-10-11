@@ -14,11 +14,6 @@ import java.util.TreeSet;
  */
 public final class MissionSubmissions {
 
-    public static final int MIN_WEEK = 3;
-    public static final int MAX_WEEK = 13;
-    public static final String MESSAGE_CONSTRAINTS =
-            "Tutorial week must be between " + MIN_WEEK + " and " + MAX_WEEK + " inclusive.";
-
     private final Set<Integer> submittedWeeks;
 
     /**
@@ -41,19 +36,9 @@ public final class MissionSubmissions {
         Set<Integer> copiedWeeks = new HashSet<>(submissionWeeks);
         for (Integer week : copiedWeeks) {
             requireNonNull(week);
-            checkArgument(isValidWeek(week), MESSAGE_CONSTRAINTS);
+            checkArgument(TutorialWeek.isValid(week), TutorialWeek.MESSAGE_CONSTRAINTS);
         }
         submittedWeeks = Collections.unmodifiableSet(copiedWeeks);
-    }
-
-    /**
-     * Returns whether the given tutorial week is within the valid range.
-     *
-     * @param week Tutorial week to check.
-     * @return True if the week is between 3 and 13, inclusive.
-     */
-    public static boolean isValidWeek(int week) {
-        return week >= MIN_WEEK && week <= MAX_WEEK;
     }
 
     /**
@@ -64,7 +49,7 @@ public final class MissionSubmissions {
      * @throws IllegalArgumentException If the week is outside the valid range.
      */
     public boolean hasSubmission(int week) {
-        checkArgument(isValidWeek(week), MESSAGE_CONSTRAINTS);
+        checkArgument(TutorialWeek.isValid(week), TutorialWeek.MESSAGE_CONSTRAINTS);
         return submittedWeeks.contains(week);
     }
 

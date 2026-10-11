@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddAttendanceCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.student.Attendance;
+import seedu.address.model.student.TutorialWeek;
 
 /**
  * Parses input arguments and creates a new {@code AddMissionCommand}.
@@ -23,7 +23,7 @@ public class AddAttendanceCommandParser implements Parser<AddAttendanceCommand> 
     public static final String MESSAGE_DUPLICATE_WEEK = "Tutorial week must be specified only once.";
     public static final String MESSAGE_INVALID_STUDENT_INDEX =
             "Student index must be a positive integer without a sign, decimal point, or leading zero.";
-    public static final String MESSAGE_INVALID_TUTORIAL_WEEK = Attendance.MESSAGE_CONSTRAINTS
+    public static final String MESSAGE_INVALID_TUTORIAL_WEEK = TutorialWeek.MESSAGE_CONSTRAINTS
             + " Enter an integer without a sign, decimal point, or leading zero.";
     private static final Pattern POSITIVE_INTEGER = Pattern.compile("[1-9][0-9]*");
 
@@ -117,7 +117,7 @@ public class AddAttendanceCommandParser implements Parser<AddAttendanceCommand> 
 
         try {
             int parsedWeek = Integer.parseInt(trimmedWeek);
-            if (!Attendance.isValidWeek(parsedWeek)) {
+            if (!TutorialWeek.isValid(parsedWeek)) {
                 throw new ParseException(MESSAGE_INVALID_TUTORIAL_WEEK);
             }
             return parsedWeek;

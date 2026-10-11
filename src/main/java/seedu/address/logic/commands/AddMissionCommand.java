@@ -12,6 +12,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.student.MissionSubmissions;
 import seedu.address.model.student.Student;
+import seedu.address.model.student.TutorialWeek;
 
 /**
  * Records a mission submission for a student identified by a displayed index.
@@ -24,8 +25,8 @@ public class AddMissionCommand extends Command {
             + ": Records a mission submission for the selected student.\n"
             + "Parameters: INDEX w/WEEK\n"
             + "INDEX must be a positive integer identifying a displayed student.\n"
-            + "WEEK must be between " + MissionSubmissions.MIN_WEEK
-            + " and " + MissionSubmissions.MAX_WEEK + " inclusive.\n"
+            + "WEEK must be between " + TutorialWeek.MIN_WEEK
+            + " and " + TutorialWeek.MAX_WEEK + " inclusive.\n"
             + "Example: " + COMMAND_WORD + " 1 w/3";
 
     public static final String MESSAGE_SUCCESS =
@@ -47,7 +48,7 @@ public class AddMissionCommand extends Command {
      */
     public AddMissionCommand(Index targetIndex, int week) {
         this.targetIndex = requireNonNull(targetIndex);
-        checkArgument(MissionSubmissions.isValidWeek(week), MissionSubmissions.MESSAGE_CONSTRAINTS);
+        checkArgument(TutorialWeek.isValid(week), TutorialWeek.MESSAGE_CONSTRAINTS);
         this.week = week;
     }
 
