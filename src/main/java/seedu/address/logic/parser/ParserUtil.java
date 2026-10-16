@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.student.Attendance;
 import seedu.address.model.student.Email;
 import seedu.address.model.student.Name;
 import seedu.address.model.student.Phone;
@@ -120,5 +121,27 @@ public class ParserUtil {
             throw new ParseException(StudioGroup.MESSAGE_CONSTRAINTS);
         }
         return new StudioGroup(trimmedStudioGroup);
+    }
+
+    /**
+     * Parses a {@code String week} into a valid {@code int week}.
+     *
+     * @throws ParseException If the given {@code week} is invalid.
+     */
+    public static int parseWeek(String week) throws ParseException {
+        requireNonNull(week);
+        String trimmedWeek = week.trim();
+        if (!StringUtil.isNonZeroUnsignedInteger(trimmedWeek)) {
+            throw new ParseException(Attendance.MESSAGE_CONSTRAINTS);
+        }
+        try {
+            int weekVal = Integer.parseInt(trimmedWeek);
+            if (!Attendance.isValidWeek(weekVal)) {
+                throw new ParseException(Attendance.MESSAGE_CONSTRAINTS);
+            }
+            return weekVal;
+        } catch (NumberFormatException e) {
+            throw new ParseException(Attendance.MESSAGE_CONSTRAINTS);
+        }
     }
 }

@@ -18,7 +18,8 @@ public class AddAttendanceCommandParser implements Parser<AddAttendanceCommand> 
      */
     @Override
     public AddAttendanceCommand parse(String args) throws ParseException {
-        WeeklyTaskParser arguments = new WeeklyTaskParser(args, AddAttendanceCommand.MESSAGE_USAGE);
+        WeeklyTaskParser arguments = new WeeklyTaskParser(args, AddAttendanceCommand.MESSAGE_USAGE,
+                AddAttendanceCommand.MESSAGE_NO_WEEK);
         return new AddAttendanceCommand(arguments.getIndex(), arguments.getWeek());
     }
 }

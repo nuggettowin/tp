@@ -34,6 +34,8 @@ public class AddAttendanceCommand extends Command {
     public static final String MESSAGE_ALREADY_RECORDED =
             "%1$s’s attendance has already been recorded for tutorial week %2$d. No changes made.";
 
+    public static final String MESSAGE_NO_WEEK = "One week integer must be provided.";
+
     private final Index targetIndex;
     private final int week;
 

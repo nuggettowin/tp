@@ -163,7 +163,7 @@ Format: `addattendance INDEX w/WEEK`
 * `WEEK` must be an integer from **3 to 13**, inclusive. AvengerHub uses these week numbers to allow tutors to flexibly mark attendance across the semester's 13 weeks. Use the actual week number as defined in the NUS student calendar.
 * Weeks outside this range, such as `-1` or `14`, are rejected with an error message. The existing attendance record remains unchanged.
 * Both arguments are required. Put `INDEX` before `w/WEEK`, and specify `w/` exactly once. Extra arguments are rejected.
-* Enter `INDEX` and `WEEK` as integers without signs, decimal points, or leading zeros. For example, use `3`, not `+3`, `3.0`, or `03`.
+* Enter `INDEX` and `WEEK` as decimal integers within their range, as mentioned above. The characters must all be decimal digits. For example, for user flexibility, some valid `WEEK` values are `3`, `03`, while `+3`, `"week3"`, `3.0` are not valid.
 * The command word and `w/` prefix are case-insensitive: `ADDATTENDANCE 1 W/3` is also accepted.
 * Each student can have one attendance recorded per week. Adding an existing record leaves the records unchanged and displays a message explaining that the attendance is already recorded.
 * The current list filter stays active.
@@ -189,7 +189,7 @@ Format: `delattendance INDEX w/WEEK`
 * `WEEK` must be an integer from **3 to 13**, inclusive. AvengerHub uses these week numbers to allow tutors to flexibly mark attendance across the semester's 13 weeks. Use the actual week number as defined in the NUS student calendar.
 * Weeks outside this range, such as `-1` or `14`, are rejected with an error message. The existing attendance record remains unchanged.
 * Both arguments are required. Put `INDEX` before `w/WEEK`, and specify `w/` exactly once. Extra arguments are rejected.
-* Enter `INDEX` and `WEEK` as integers without signs, decimal points, or leading zeros.
+* Enter `INDEX` and `WEEK` as decimal integers within their range, as mentioned above. The characters must all be decimal digits. For example, for user flexibility, some valid `WEEK` values are `3`, `03`, while `+3`, `"week3"`, `3.0` are not valid.
 * The command word and `w/` prefix are case-insensitive: `DELATTENDANCE 1 W/3` is also accepted.
 * If the attendance was initially not recorded, the records remain unchanged and a message explains that no changes were made.
 * The current list filter stays active.

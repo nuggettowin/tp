@@ -17,7 +17,8 @@ public class DeleteAttendanceCommandParser implements Parser<DeleteAttendanceCom
      */
     @Override
     public DeleteAttendanceCommand parse(String args) throws ParseException {
-        WeeklyTaskParser arguments = new WeeklyTaskParser(args, DeleteAttendanceCommand.MESSAGE_USAGE);
+        WeeklyTaskParser arguments = new WeeklyTaskParser(args, DeleteAttendanceCommand.MESSAGE_USAGE,
+                DeleteAttendanceCommand.MESSAGE_NO_WEEK);
         return new DeleteAttendanceCommand(arguments.getIndex(), arguments.getWeek());
     }
 }
